@@ -1,14 +1,14 @@
-const { NotFoundError } = require("../errors");
+const { NotFoundError } = require('../errors');
 
 class ApplicationController {
-  handleGetRoot = (req, res) => {
-    res.status(200).json({
-      status: "OK",
-      message: "BCR API is up and running!",
+  static handleGetRoot = (req, res) => {
+    this.test = res.status(200).json({
+      status: 'OK',
+      message: 'BCR API is up and running!',
     });
-  }
+  };
 
-  handleNotFound = (req, res) => {
+  static handleNotFound = (req, res) => {
     const err = new NotFoundError(req.method, req.url);
 
     res.status(404).json({
@@ -16,27 +16,27 @@ class ApplicationController {
         name: err.name,
         message: err.message,
         details: err.details,
-      }
-    })
-  }
+      },
+    });
+  };
 
-  handleError = (err, req, res, next) => {
+  static handleError = (err, req, res) => {
     res.status(500).json({
       error: {
         name: err.name,
         message: err.message,
         details: err.details || null,
-      }
-    })
-  } 
+      },
+    });
+  };
 
-  getOffsetFromRequest(req) {
+  static getOffsetFromRequest(req) {
     const { page = 1, pageSize = 10 } = req.query;
-    const offset = (page - 1) * pageSize; 
+    const offset = (page - 1) * pageSize;
     return offset;
   }
 
-  buildPaginationObject(req, count) {
+  static buildPaginationObject(req, count) {
     const { page = 1, pageSize = 10 } = req.query;
     const pageCount = Math.ceil(count / pageSize);
     return {
@@ -44,7 +44,7 @@ class ApplicationController {
       pageCount,
       pageSize,
       count,
-    }
+    };
   }
 }
 
