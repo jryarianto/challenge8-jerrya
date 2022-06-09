@@ -1,38 +1,38 @@
 module.exports = {
-  async up(queryInterface, Sequelize) {
+  async up (queryInterface, Sequelize) {
     await queryInterface.createTable('Cars', {
       id: {
         allowNull: false,
         autoIncrement: true,
         primaryKey: true,
-        type: Sequelize.INTEGER,
+        type: Sequelize.INTEGER
       },
       name: {
-        type: Sequelize.STRING,
+        type: Sequelize.STRING
       },
       price: {
-        type: Sequelize.FLOAT,
+        type: Sequelize.FLOAT
       },
       size: {
-        type: Sequelize.STRING,
+        type: Sequelize.STRING
       },
       image: {
-        type: Sequelize.STRING,
+        type: Sequelize.STRING
       },
       isCurrentlyRented: {
-        type: Sequelize.BOOLEAN,
+        type: Sequelize.BOOLEAN
       },
       createdAt: {
         allowNull: false,
-        type: Sequelize.DATE,
+        type: Sequelize.DATE
       },
       updatedAt: {
         allowNull: false,
-        type: Sequelize.DATE,
-      },
-    });
+        type: Sequelize.DATE
+      }
+    })
   },
-  async down(queryInterface) {
-    await queryInterface.dropTable('Cars');
-  },
-};
+  async down (queryInterface, Sequelize) {
+    await queryInterface.dropTable('Cars')
+  }
+}

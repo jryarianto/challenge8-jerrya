@@ -1,16 +1,14 @@
-/* eslint linebreak-style: ["error", "windows"] */
-
-const ApplicationError = require('./ApplicationError');
+const ApplicationError = require('./ApplicationError')
 
 class EmailAlreadyTakenError extends ApplicationError {
-  constructor(email) {
-    super(`${email} is already rented!!`);
-    this.email = email;
+  constructor (email) {
+    super(`${email} already taken!`)
+    this.email = email
   }
 
-  static details() {
-    return { email: this.email };
+  get details () {
+    return { email: this.email }
   }
 }
 
-module.exports = EmailAlreadyTakenError;
+module.exports = EmailAlreadyTakenError

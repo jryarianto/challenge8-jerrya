@@ -1,6 +1,6 @@
 const {
-  Model,
-} = require('sequelize');
+  Model
+} = require('sequelize')
 
 module.exports = (sequelize, DataTypes) => {
   class Car extends Model {
@@ -9,11 +9,11 @@ module.exports = (sequelize, DataTypes) => {
      * This method is not a part of Sequelize lifecycle.
      * The `models/index` file will call this method automatically.
      */
-    static associate(models) {
+    static associate (models) {
       this.hasOne(models.UserCar, {
         foreignKey: 'carId',
-        as: 'userCar',
-      });
+        as: 'userCar'
+      })
     }
 
     // toJSON() {
@@ -35,10 +35,10 @@ module.exports = (sequelize, DataTypes) => {
     price: DataTypes.FLOAT,
     size: DataTypes.STRING,
     image: DataTypes.STRING,
-    isCurrentlyRented: DataTypes.BOOLEAN,
+    isCurrentlyRented: DataTypes.BOOLEAN
   }, {
     sequelize,
-    modelName: 'Car',
-  });
-  return Car;
-};
+    modelName: 'Car'
+  })
+  return Car
+}

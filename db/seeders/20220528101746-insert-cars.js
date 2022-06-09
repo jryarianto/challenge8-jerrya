@@ -30,41 +30,41 @@ const carnames = [
   'Ford Pantera L',
   'Ferrari Dino',
   'Maserati Bora',
-  'Volvo 142E',
-];
+  'Volvo 142E'
+]
 
-const sizes = ['SMALL', 'MEDIUM', 'LARGE'];
+const sizes = ['SMALL', 'MEDIUM', 'LARGE']
 
 module.exports = {
-  async up(queryInterface) {
-    const cars = [];
+  async up (queryInterface, Sequelize) {
+    const cars = []
 
     sizes.forEach((size) => {
       cars.push(
         ...carnames.map((name, i) => {
           const accumulator = i.toLocaleString('en-US', {
             minimumIntegerDigits: 2,
-            useGrouping: false,
-          });
+            useGrouping: false
+          })
 
-          const timestamp = new Date();
+          const timestamp = new Date()
 
-          return {
+          return ({
             name,
             price: 300000,
             size,
             image: `https://source.unsplash.com/5${accumulator}x5${accumulator}`,
             isCurrentlyRented: false,
             createdAt: timestamp,
-            updatedAt: timestamp,
-          };
-        }),
-      );
-    });
-    await queryInterface.bulkInsert('Cars', cars, {});
+            updatedAt: timestamp
+          })
+        })
+      )
+    })
+    await queryInterface.bulkInsert('Cars', cars, {})
   },
 
-  async down(queryInterface) {
-    await queryInterface.bulkDelete('Cars', null, {});
-  },
-};
+  async down (queryInterface, Sequelize) {
+    await queryInterface.bulkDelete('Cars', null, {})
+  }
+}

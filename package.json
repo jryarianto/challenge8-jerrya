@@ -5,8 +5,8 @@
   "license": "MIT",
   "scripts": {
     "start": "node -r dotenv/config bin/www",
-    "develop": "nodemon -r dotenv/config bin/www",
     "test": "jest",
+    "develop": "nodemon -r dotenv/config bin/www",
     "db:create": "sequelize db:create",
     "db:drop": "sequelize db:drop",
     "db:migrate": "sequelize db:migrate",
@@ -30,7 +30,10 @@
   "devDependencies": {
     "eslint": "^8.17.0",
     "eslint-config-airbnb-base": "^15.0.0",
+    "eslint-config-standard": "^17.0.0",
     "eslint-plugin-import": "^2.26.0",
+    "eslint-plugin-n": "^15.2.2",
+    "eslint-plugin-promise": "^6.0.0",
     "nodemon": "^2.0.16"
   }
 }
